@@ -1,0 +1,73 @@
+The 7Cs or seven key elements of communication are:
+
+Clarity: Messages should be clear and easily understood by the audience.
+ Clarity ensures that there is no ambiguity in the message and the audience
+ can easily comprehend the intended message.
+
+Completeness: Messages should be complete and include all necessary information. 
+A complete message should contain all relevant facts, figures, and details required to make informed decisions.
+
+Conciseness: Messages should be concise and to the point.
+ A concise message is one that is brief and does not contain any unnecessary information.
+
+Concreteness: Messages should be concrete and specific, avoiding abstract or vague language. 
+A concrete message provides tangible details and specific examples to support the message.
+
+Correctness: Messages should be correct in terms of grammar, spelling, and punctuation. 
+Correctness ensures that the message is credible and trustworthy.
+
+Courtesy: Messages should be courteous and respectful, taking into account the feelings 
+and perspectives of the audience. Courtesy is important for building and maintaining positive relationships.
+
+Consistency: Messages should be consistent with the organization's values, mission, and branding. 
+Consistency ensures that the message aligns with the organization's overall goals and objectives.
+
+
+
+#include<iostream>
+#include<process.h>
+using namespace std;
+ const int LIMIT=100;
+class safearr{
+	public:
+		int arr[LIMIT];
+//		public:
+			void putel(int n , int elvalue)
+			{
+				if(n>=0 && n<LIMIT)
+				{
+					arr[n]=elvalue;
+				}
+				else
+				{
+					cout<<"not of index";
+					exit(1);
+				}
+			}
+			int getel(int n) 
+			{
+				if (n<0 || n>=LIMIT)
+				{
+					cout<<"out of index";
+					exit(1);
+				}
+				return arr[n];
+				
+			}
+};
+int main()
+{
+	safearr sa;
+	for(int i=0;i<100;i++)
+	{
+		sa.putel(i,i*20);
+	}
+	cout<<sa.arr[10];
+	for(int j=0;j<100;j++)
+	{
+		sa.getel(j);
+		
+//		cout<<"Element"<<j+200<<"is"<<endl;
+	}
+	return 0;
+}

@@ -1,0 +1,65 @@
+Polymorphism is a key concept in object-oriented programming (OOP) that allows objects of different classes to be treated as if they were objects of the same class, and to respond to method calls in different ways depending on their specific class. There are two main types of polymorphism: compile-time (or static) polymorphism and runtime (or dynamic) polymorphism.
+
+Compile-time polymorphism is achieved through function overloading, which allows multiple functions to have the same name but different parameter lists, so that the appropriate function can be called based on the arguments passed to it. For example:
+
+c
+Copy code
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+  void print(int x) {
+    cout << "Printing an integer: " << x << endl;
+  }
+  void print(float x) {
+    cout << "Printing a float: " << x << endl;
+  }
+};
+
+int main() {
+  MyClass obj;
+  obj.print(10);
+  obj.print(3.14);
+  return 0;
+}
+In this example, we define a class called MyClass with two overloaded print() functions that take an integer and a float, respectively. In main(), we create an object obj of the class MyClass, and then call the print() function twice, once with an integer argument and once with a float argument. The appropriate function is called based on the type of argument passed, so the output shows that the integer is printed with the first function and the float is printed with the second function.
+
+Runtime polymorphism is achieved through virtual functions, which allow derived classes to override the behavior of base class functions. This allows objects of different derived classes to respond to method calls in different ways, based on their specific implementation of the virtual function. For example:
+
+arduino
+Copy code
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+  virtual void draw() {
+    cout << "Drawing a shape." << endl;
+  }
+};
+
+class Circle : public Shape {
+public:
+  void draw() override {
+    cout << "Drawing a circle." << endl;
+  }
+};
+
+class Square : public Shape {
+public:
+  void draw() override {
+    cout << "Drawing a square." << endl;
+  }
+};
+
+int main() {
+  Shape* shape1 = new Circle();
+  Shape* shape2 = new Square();
+  shape1->draw();
+  shape2->draw();
+  delete shape1;
+  delete shape2;
+  return 0;
+}
+In this example, we define a base class Shape with a virtual function draw(), and two derived classes Circle and Square that override the draw() function with their own implementation. In main(), we create two pointers shape1 and shape2 to objects of the derived classes, and then call the draw() function on each of them. The appropriate implementation of the draw() function is called based on the actual class of the object pointed to, so the output shows that the circle and square are drawn using their respective implementations. Finally, we delete the dynamically allocated objects to free up memory.

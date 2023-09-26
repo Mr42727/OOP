@@ -1,0 +1,52 @@
+In C++, a destructor is a special member function that is called automatically 
+when an object is destroyed, either by going out of scope, being deleted using the delete operator, 
+or by the program terminating. The destructor is used to free any resources that were allocated by the object during its lifetime, 
+such as memory or file handles. Here are ten points related to destructors in C++:
+
+Destructors have the same name as the class they belong to, but with a tilde (~) character in front of the name.
+
+Destructors do not have any parameters, and do not have a return type.
+
+If a class does not define a destructor, the compiler will generate a default destructor that does nothing.
+
+If a class has any data members that are objects of another class, the destructor of the other class will also be called automatically when the object is destroyed.
+
+Destructors can be defined as public, protected, or private, depending on how the class should be accessed.
+
+Destructors can be used to free memory that was allocated using the new operator.
+
+Destructors can be used to close files, sockets, or other resources that were opened by the object.
+
+Destructors can be used to perform any other necessary cleanup tasks, such as logging or releasing locks.
+
+Destructors are always called in reverse order of construction, so if an object A was constructed before an object B, then B's destructor will be called before A's destructor.
+
+Here's an example of a destructor in C++:
+
+arduino
+Copy code
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+  int x, y;
+
+  MyClass() {
+    x = 0;
+    y = 0;
+    cout << "Constructor called" << endl;
+  }
+
+  ~MyClass() {
+    cout << "Destructor called" << endl;
+  }
+};
+
+int main() {
+  MyClass obj1;
+  MyClass* obj2 = new MyClass();
+  delete obj2;
+  return 0;
+}
+In this example, we define a class called MyClass that has two data members x and y. We define a default constructor that sets x and y to 0 and outputs a message to the console. We also define a destructor that outputs a message when the object is destroyed. In main(), we create two MyClass objects: obj1 using the default constructor, and obj2 using the new operator. We then delete obj2 using the delete operator, which calls its destructor. The output of the program shows that the constructor and destructor are called at the appropriate times.
